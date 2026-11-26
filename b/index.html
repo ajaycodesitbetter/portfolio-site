@@ -1,0 +1,86 @@
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
+<title>Ajay Mathuriya</title><meta name=description content="AI/ML student and builder.">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel=stylesheet>
+<style>
+:root{--bg:#0a0b0a;--card:#111311;--ink:#ecefe9;--mute:#8a9186;--g:#76b900;--line:#232622}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 'Space Grotesk',sans-serif;overflow-x:hidden}
+#spot{position:fixed;inset:0;pointer-events:none;background:radial-gradient(500px circle at var(--x,50%) var(--y,30%),rgba(118,185,0,.10),transparent 60%);z-index:0}
+.w{position:relative;z-index:1;max-width:1000px;margin:0 auto;padding:0 24px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0;font:500 14px 'JetBrains Mono',monospace;color:var(--mute)}
+nav b{color:var(--ink)}nav kbd{white-space:nowrap;border:1px solid var(--line);border-radius:6px;padding:3px 8px;color:var(--ink);background:var(--card);cursor:pointer;font:inherit}
+.hero{padding:9vh 0 8vh;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
+.pill{display:inline-flex;gap:8px;align-items:center;font:500 13px 'JetBrains Mono',monospace;color:var(--g);border:1px solid #2c3a14;background:#0f1708;padding:5px 12px;border-radius:99px}
+.pill i{width:7px;height:7px;border-radius:50%;background:var(--g);animation:p 1.6s infinite}@keyframes p{50%{opacity:.25}}
+h1{font:700 clamp(44px,8vw,84px)/1 'Space Grotesk';letter-spacing:-.04em;margin:22px 0 18px}
+h1 span{color:var(--g)}
+.role{font:400 clamp(18px,2.4vw,24px)/1.4 'JetBrains Mono',monospace;color:var(--mute);min-height:1.5em}
+.role b{color:var(--ink);font-weight:500}.cur{display:inline-block;width:10px;height:1.05em;background:var(--g);vertical-align:-3px;margin-left:3px;animation:p 1s infinite}
+.ph{width:200px;height:240px;border-radius:20px;background:linear-gradient(160deg,#1a2410,#0f110f);border:1px solid var(--line);display:grid;place-items:center;font:700 56px 'Space Grotesk';color:var(--g);overflow:hidden;transform:rotate(2deg);transition:.4s}
+.ph:hover{transform:rotate(-1deg) scale(1.03)}.ph img{width:100%;height:100%;object-fit:cover}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:72px}
+.st{border:1px solid var(--line);background:var(--card);border-radius:14px;padding:18px}
+.st b{display:block;font:700 34px 'Space Grotesk';letter-spacing:-.03em}.st span{font:400 12px 'JetBrains Mono',monospace;color:var(--mute)}
+h2{font:500 13px 'JetBrains Mono',monospace;color:var(--g);letter-spacing:.08em;text-transform:uppercase;margin:0 0 20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:72px}
+.card{position:relative;display:block;border:1px solid var(--line);background:var(--card);border-radius:18px;padding:26px;color:inherit;text-decoration:none;transition:transform .15s,border-color .3s;transform-style:preserve-3d;overflow:hidden}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(260px circle at var(--mx,50%) var(--my,0),rgba(118,185,0,.16),transparent 70%);opacity:0;transition:.3s}
+.card:hover{border-color:#3b4c1c}.card:hover::before{opacity:1}
+.card small{font:400 12px 'JetBrains Mono',monospace;color:var(--g)}
+.card h3{font:700 26px 'Space Grotesk';letter-spacing:-.02em;margin:8px 0}.card p{margin:0;color:var(--mute);font-size:15px;position:relative}
+.card .ar{position:absolute;right:22px;top:22px;color:var(--mute);transition:.3s}.card:hover .ar{color:var(--g);transform:translate(3px,-3px)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:72px}.two .st{padding:26px}.two p{margin:8px 0 0;color:var(--mute)}.two h3{margin:0;font:700 22px 'Space Grotesk'}
+.links{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:60px}
+.links a{font:500 14px 'JetBrains Mono',monospace;color:var(--ink);text-decoration:none;border:1px solid var(--line);padding:10px 16px;border-radius:99px;transition:.2s}.links a:hover{border-color:var(--g);color:var(--g)}
+footer{padding:30px 0 110px;border-top:1px solid var(--line);color:var(--mute);font:400 13px 'JetBrains Mono',monospace;display:flex;justify-content:space-between}
+#pal{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);display:none;place-items:start center;padding-top:16vh;z-index:9}
+#pal.on{display:grid}#pal div{width:min(520px,92vw);background:#111311;border:1px solid #2c3a14;border-radius:16px;overflow:hidden}
+#pal input{width:100%;background:none;border:0;border-bottom:1px solid var(--line);padding:18px;color:var(--ink);font:500 16px 'JetBrains Mono',monospace;outline:0}
+#pal a{display:flex;justify-content:space-between;padding:12px 18px;color:var(--ink);text-decoration:none;font:400 14px 'JetBrains Mono',monospace}#pal a.sel,#pal a:hover{background:#18200d;color:var(--g)}
+.r{opacity:0;transform:translateY(16px);transition:.8s cubic-bezier(.2,.7,.2,1)}.r.in{opacity:1;transform:none}
+@media(max-width:760px){nav kbd{font-size:12px}.hero{grid-template-columns:1fr}.ph{width:130px;height:150px;order:-1}.stats{grid-template-columns:1fr 1fr}.grid,.two{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.r{opacity:1;transform:none;transition:none}.pill i,.cur{animation:none}.card{transition:none}}
+a:focus-visible,button:focus-visible{outline:2px solid var(--g);outline-offset:3px}
+</style>
+<div id=spot></div>
+<div class=w>
+<nav><b>ajaymathuriya.com</b><kbd id=kb>Press K or tap</kbd></nav>
+<section class=hero><div>
+<span class=pill><i></i><span id=clock>Gwalior, India</span></span>
+<h1 class=r>Ajay<br><span>Mathuriya</span></h1>
+<div class=role id=role></div></div>
+<div class=ph id=ph>AM</div></section>
+<section class="stats r"><div class=st><b id=s1>11</b><span>merged PRs, Open Directory</span></div><div class=st><b id=s2>-</b><span>public repos (live)</span></div><div class=st><b>1</b><span>paper, sole author</span></div><div class=st><b>3rd</b><span>year B.Tech, AI &amp; ML</span></div></section>
+<h2 class=r id=projects-h>Things I built</h2><section class="grid r" id=projects></section>
+<h2 class=r>Open source and research</h2><section class="two r"><div class=st><h3>Open source</h3><p id=oss></p></div><div class=st><h3>Research</h3><p id=paper></p></div></section>
+<h2 class=r>Community</h2><section class="two r" style="grid-template-columns:1fr"><div class=st><h3>AITSC</h3><p id=club></p></div></section><h2 class=r>Find me</h2><div class="links r" id=links></div>
+<footer><span>Ajay Mathuriya</span><span>I also make tech videos on YouTube</span></footer>
+</div>
+<div id=pal><div><input id=q placeholder="Go to..." aria-label=Search><section id=res></section></div></div>
+<script src=../data.js></script>
+<script>
+const D=AJ,$=s=>document.querySelector(s);
+$('#projects').innerHTML=D.projects.map(p=>`<a class=card href="${p.u}" target=_blank rel=noopener><span class=ar>\u2197</span><small>${p.t} / ${p.y}</small><h3>${p.n}</h3><p>${p.d}</p></a>`).join('');
+$('#club').textContent=D.club;$('#oss').textContent=D.oss.text;$('#paper').textContent=D.paper.t+'. '+D.paper.v;
+$('#links').innerHTML=D.links.map(l=>`<a href="${l[1]}" target=_blank rel=noopener>${l[0]} \u2197</a>`).join('');
+const im=new Image();im.onload=()=>{$('#ph').innerHTML='';$('#ph').append(im)};im.alt='Ajay Mathuriya';im.src='../photo.jpg';
+// typed roles
+const roles=['AI/ML student','open source contributor','builder of small tools','tech video creator'];let ri=0,ci=0,del=false;
+const rl=$('#role');function tick(){const w=roles[ri];ci+=del?-1:1;rl.innerHTML='<b>'+w.slice(0,ci)+'</b><span class=cur></span>';let d=del?35:70;if(!del&&ci==w.length){del=true;d=1400}else if(del&&ci==0){del=false;ri=(ri+1)%roles.length;d=300}setTimeout(tick,d)}
+if(matchMedia('(prefers-reduced-motion:reduce)').matches)rl.innerHTML='<b>'+roles.join(', ')+'</b>';else tick();
+// clock
+const t=()=>$('#clock').textContent='Gwalior, '+new Date().toLocaleTimeString('en-IN',{timeZone:'Asia/Kolkata',hour:'2-digit',minute:'2-digit'});t();setInterval(t,30000);
+// live github
+fetch('https://api.github.com/users/ajaycodesitbetter').then(r=>r.json()).then(u=>{if(u.public_repos!=null)$('#s2').textContent=u.public_repos}).catch(()=>{});
+// spotlight + card glow
+addEventListener('pointermove',e=>{const s=$('#spot').style;s.setProperty('--x',e.clientX+'px');s.setProperty('--y',e.clientY+'px')});
+document.querySelectorAll('.card').forEach(c=>c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;c.style.setProperty('--mx',x+'px');c.style.setProperty('--my',y+'px');c.style.transform=`perspective(700px) rotateY(${(x/r.width-.5)*6}deg) rotateX(${-(y/r.height-.5)*6}deg)`}));
+document.querySelectorAll('.card').forEach(c=>c.addEventListener('pointerleave',()=>c.style.transform=''));
+// palette
+const items=[...D.projects.map(p=>[p.n,p.u]),...D.links];const pal=$('#pal'),q=$('#q');let sel=0;
+function render(){const v=q.value.toLowerCase(),L=items.filter(i=>i[0].toLowerCase().includes(v));sel=Math.min(sel,Math.max(L.length-1,0));$('#res').innerHTML=L.map((i,k)=>`<a class="${k==sel?'sel':''}" href="${i[1]}" target=_blank rel=noopener><span>${i[0]}</span><span>\u2197</span></a>`).join('')}
+function open(o){pal.classList.toggle('on',o);if(o){q.value='';sel=0;render();q.focus()}}
+$('#kb').onclick=()=>open(true);pal.onclick=e=>{if(e.target===pal)open(false)};q.oninput=render;
+addEventListener('keydown',e=>{if((e.key=='k'&&(e.metaKey||e.ctrlKey||document.activeElement===document.body))){e.preventDefault();open(true)}else if(e.key=='Escape')open(false);else if(pal.classList.contains('on')){if(e.key=='ArrowDown'){sel++;render()}if(e.key=='ArrowUp'){sel=Math.max(0,sel-1);render()}if(e.key=='Enter'){const a=document.querySelector('#res a.sel');a&&a.click()}}});
+const io=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('in')),{threshold:.08});document.querySelectorAll('.r').forEach(e=>io.observe(e));
+</script><script src=../chat.js></script></html>
