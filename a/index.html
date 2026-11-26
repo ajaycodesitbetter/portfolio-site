@@ -1,0 +1,56 @@
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
+<title>Ajay Mathuriya</title><meta name=description content="AI/ML student and builder. Projects, open source and videos.">
+<link rel=preconnect href=https://fonts.googleapis.com><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500&display=swap" rel=stylesheet>
+<style>
+:root{--bg:#faf8f4;--ink:#1c1b19;--mute:#76726a;--line:#e3dfd6}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+main{max-width:640px;margin:0 auto;padding:12vh 24px 10vh}
+h1{font:400 clamp(40px,7vw,60px)/1.05 Newsreader,serif;letter-spacing:-.02em;margin:0 0 20px}
+h1 em{color:var(--mute)}
+.lead{font:400 22px/1.45 Newsreader,serif;margin:0 0 56px;max-width:30em}
+.top{display:flex;align-items:center;gap:16px;margin-bottom:40px}
+.ph{width:56px;height:56px;border-radius:50%;background:#e9e4d9;display:grid;place-items:center;font:500 18px Newsreader,serif;overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:cover}
+.top small{color:var(--mute)}.live{display:inline-block;width:7px;height:7px;border-radius:50%;background:#4a9d5b;margin-right:6px;animation:p 2s infinite}
+@keyframes p{50%{opacity:.3}}
+h2{font:500 13px Inter;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin:56px 0 8px}
+.row{display:block;padding:18px 0;border-top:1px solid var(--line);color:inherit;text-decoration:none;transition:padding .25s}
+.row:last-child{border-bottom:1px solid var(--line)}
+.row b{font:500 20px Newsreader,serif;display:flex;justify-content:space-between}
+.row span{color:var(--mute);font-size:15px;display:block;max-width:34em}
+.row b i{font:400 13px Inter;color:var(--mute);font-style:normal}
+.row:hover{padding-left:10px}.row:hover b::after{content:"\2197";margin-left:8px}
+.row b{justify-content:flex-start;gap:12px}.row b i{margin-left:auto}
+p{margin:0 0 12px}
+.links{display:flex;gap:22px;flex-wrap:wrap;margin-top:12px}
+.links a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px}.links a:hover{border-color:var(--ink)}
+footer{margin-top:80px;color:var(--mute);font-size:14px}
+.r{opacity:0;transform:translateY(10px);transition:.7s cubic-bezier(.2,.7,.2,1)}.r.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.r{opacity:1;transform:none;transition:none}.live{animation:none}}
+a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+</style>
+<main>
+<div class="top r"><div class=ph id=ph>AM</div><div><b>Ajay Mathuriya</b><br><small><span class=live></span><span id=clock>Gwalior</span></small></div></div>
+<h1 class=r>I build small tools <em>and put them in public.</em></h1>
+<p class="lead r" id=about></p>
+<h2 class=r>Projects</h2><div id=projects class=r></div>
+<h2 class=r>Open source</h2><p class=r id=oss></p>
+<h2 class=r>Research</h2><p class=r id=paper></p>
+<h2 class=r>Community</h2><p class=r id=club></p><h2 class=r>Videos</h2><p class=r>I make tech videos on YouTube, mostly about AI tools and how to set them up.</p>
+<h2 class=r>Elsewhere</h2><div class="links r" id=links></div>
+<footer class=r>Ajay Mathuriya, Gwalior, India</footer>
+</main>
+<script src=../data.js></script>
+<script>
+const D=AJ,$=s=>document.querySelector(s);
+$('#about').textContent=D.about;
+$('#projects').innerHTML=D.projects.map(p=>`<a class=row href="${p.u}" target=_blank rel=noopener><b>${p.n}<i>${p.t}, ${p.y}</i></b><span>${p.d}</span></a>`).join('');
+$('#club').textContent=D.club;$('#oss').textContent=D.oss.text;
+$('#paper').innerHTML=`<i>${D.paper.t}.</i> ${D.paper.v}`;
+$('#links').innerHTML=D.links.map(l=>`<a href="${l[1]}" target=_blank rel=noopener>${l[0]}</a>`).join('');
+const im=new Image();im.onload=()=>{$('#ph').innerHTML='';$('#ph').append(im)};im.alt='Ajay Mathuriya';im.src='../photo.jpg';
+const t=()=>$('#clock').textContent='Gwalior, '+new Date().toLocaleTimeString('en-IN',{timeZone:'Asia/Kolkata',hour:'2-digit',minute:'2-digit'});t();setInterval(t,30000);
+const io=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('in')),{threshold:.1});
+document.querySelectorAll('.r').forEach((e,i)=>{e.style.transitionDelay=Math.min(i*40,300)+'ms';io.observe(e)});
+</script></html>
