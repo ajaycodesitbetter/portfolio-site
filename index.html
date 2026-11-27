@@ -18,9 +18,10 @@ a{color:inherit}
 .top .rt{text-align:right;font-size:12px;line-height:1.6;color:var(--mute)}
 .tagbox{display:inline-block;border:1px solid var(--ink);border-radius:2px;padding:1px 7px;font-size:10px;letter-spacing:.14em;color:var(--mute);margin-top:14px}
 .line{margin:12px 0 0;display:flex;align-items:center;flex-wrap:wrap;gap:0 6px;min-height:26px}
-.fast{cursor:pointer;font-style:italic;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line);white-space:nowrap}
-.trn{display:inline-block;position:relative;width:3.6em;height:1em;vertical-align:-.12em;margin-left:.35em;pointer-events:none}
-.trn>svg.tr{position:absolute;left:0;top:0;height:1em;width:3.2em;overflow:visible;will-change:transform}
+.fast{position:relative;transition:color .14s,text-decoration-color .14s;cursor:pointer;font-style:italic;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line);white-space:nowrap}
+.fast.on{color:transparent;text-decoration-color:transparent}
+.trn{position:absolute;left:0;top:0;width:3.6em;height:1em;pointer-events:none}
+.trn>svg.tr{position:absolute;left:0;top:0;height:1em;width:3.2em;overflow:visible;will-change:transform;opacity:0}
 .trn>svg.tr{z-index:3}
 .scn{position:absolute;left:0;top:-.8em;height:2.55em;overflow:hidden;opacity:0;transition:opacity .25s;pointer-events:none;z-index:1}
 .scn>*{position:absolute}
@@ -154,7 +155,7 @@ if(matchMedia('(prefers-reduced-motion:reduce)').matches){await wait(300);busy=f
 try{const left=tr.getBoundingClientRect().left,tw=ts.getBoundingClientRect().width;
 const W=Math.max(110,Math.min(250,innerWidth-left-12)),X=Math.max(20,W-tw-18);
 sc.style.width=W+'px';fj.style.left=(W*.55)+'px';hl.style.left=(W*.2)+'px';cl.style.left=(W*.35)+'px';
-sc.style.opacity=1;const o={duration:2000,easing:'cubic-bezier(.45,0,.25,1)',fill:'forwards'};
+f.classList.add('on');await wait(140);ts.animate([{opacity:0},{opacity:1}],{duration:160,fill:'forwards'});sc.style.opacity=1;const o={duration:2000,easing:'cubic-bezier(.45,0,.25,1)',fill:'forwards'};
 const A=[ts.animate([{transform:'translateX(0)'},{transform:'translateX(-3px)',offset:.08},{transform:'translateX('+X+'px)'}],o),
 fj.animate([{transform:'translateX(0)'},{transform:'translateX(-'+(W*.4)+'px)'}],o),
 hl.animate([{transform:'translateX(0)'},{transform:'translateX(-'+(W*.9)+'px)'}],o),
@@ -165,8 +166,8 @@ await Promise.all(A.map(a=>a.finished.catch(()=>{})));
 const S=sm.animate([{opacity:0,transform:'rotate(-8deg) scale(1.7)'},{opacity:1,transform:'rotate(-8deg) scale(1)'}],{duration:220,fill:'forwards'});
 await wait(950);sc.style.opacity=0;ts.animate([{opacity:1},{opacity:0}],{duration:250,fill:'forwards'});await wait(300);
 A.concat([S]).forEach(a=>a.cancel());ts.getAnimations().forEach(a=>a.cancel());
-ts.animate([{opacity:0},{opacity:1}],{duration:350,easing:'ease-out'});await wait(350)}
-finally{busy=false}};
+f.classList.remove('on');await wait(160)}
+finally{f.classList.remove('on');busy=false}};
 f.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')go()});f.addEventListener('click',go);f.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}});
 // hover cards
 const T={tools:[D.projects.map(p=>p.n),'things I built'],oss:[['11 merged PRs','Open Directory','Meshery'],'open source contributions'],aitsc:[['founder','vice president','SRCEM'],'AI & Technical Synthesis Council'],gs:[['hosted','anchored'],'event at SRCEM'],paper:[['MAICM','NCETEM-I','sole author'],'multi-agent colony management, AI + IoT + edge'],video:[['YouTube','AI tools','setup guides'],'tech videos']};
