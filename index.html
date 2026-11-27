@@ -20,8 +20,14 @@ a{color:inherit}
 .line{margin:12px 0 0;display:flex;align-items:center;flex-wrap:wrap;gap:0 6px;min-height:26px}
 .fast{cursor:pointer;font-style:italic;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line);white-space:nowrap}
 .trn{display:inline-block;position:relative;width:3.6em;height:1em;vertical-align:-.12em;margin-left:.35em;pointer-events:none}
-.trn svg{position:absolute;left:0;top:0;height:1em;width:3.2em;overflow:visible;will-change:transform}
-.trn .sp{position:absolute;left:-1.2em;top:.2em;height:.6em;width:1.2em;opacity:0}
+.trn>svg.tr{position:absolute;left:0;top:0;height:1em;width:3.2em;overflow:visible;will-change:transform}
+.trn>svg.tr{z-index:3}
+.scn{position:absolute;left:0;top:-.8em;height:2.55em;overflow:hidden;opacity:0;transition:opacity .25s;pointer-events:none;z-index:1}
+.scn>*{position:absolute}
+.scn .sxf{bottom:.85em;height:1.35em;width:2.3em}.scn .sxh{bottom:.85em;height:.7em;width:1.5em}.scn .sxc{top:.05em;height:.5em;width:1.2em}
+.scn .sxr{left:0;right:0;bottom:.7em;height:.17em;border-top:1.5px solid #2a2114;background:repeating-linear-gradient(90deg,#4a3a1c 0 2px,transparent 2px 9px) 0 100%/auto 55% no-repeat}
+.scn .sxs{bottom:.85em;right:2px;height:1.15em;width:.9em}
+.scn .sxm{bottom:0;right:.9em;font:400 .5em/1 'Special Elite',monospace;color:#8c2f1b;border:1.5px solid #8c2f1b;padding:.15em .4em;letter-spacing:.08em;opacity:0;white-space:nowrap;transform:rotate(-8deg)}
 h2{font:400 16px/1.4 'Special Elite',monospace;letter-spacing:.14em;text-transform:uppercase;margin:0 0 10px;color:var(--ink)}h2::before{content:'\00a7  ';color:var(--red)}.note{text-transform:none;letter-spacing:0;font:400 36px/1 'Mrs Saint Delafield',cursive;color:#1d2a52;display:inline-block;transform:rotate(-4deg);margin-left:10px;vertical-align:middle;white-space:nowrap}
 section{margin-top:34px}
 p{margin:0 0 10px}
@@ -95,7 +101,7 @@ h1.nm{margin:0;font-weight:400}
 <div class=wrap role=main>
 <div class=top><h1 class=nm>ajay mathuriya</h1><span class=rt><a href="https://www.google.com/search?q=top+5+facts+about+Gwalior" target=_blank rel=noopener style="text-decoration:none">(ग्वालियर, इंडिया)</a><br><span id=clock></span></span></div>
 <div class=tagbox>AI / ML, BUILDER, OPEN SOURCE</div>
-<div class=line>ships small tools really <span class=fast id=fast tabindex=0 role=button aria-label="play the fast animation">fast.<span class=trn id=trn><svg viewBox="0 0 64 16" aria-hidden="true"><g transform="translate(64 0) scale(-1 1)" fill="none" stroke="#2a2114" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M2 12c0-1 1-2 4-3.5C12 5.5 20 4 28 4h30c3 0 4.500 1.500 4.500 4v4H2z" fill="#e8d8a8"/><path d="M13 6.300h8M25 6.300h8M37 6.300h8M49 6.300h7"/><path d="M2 10.500h60" stroke="#8c2f1b"/><path d="M8 15.300h4M20 15.300h4M40 15.300h4M52 15.300h4"/></g></svg><svg class=sp viewBox="0 0 20 10" aria-hidden="true"><path d="M1 2h14M5 5h14M2 8h12" stroke="#7a6232" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg></span></span></div>
+<div class=line>ships small tools really <span class=fast id=fast tabindex=0 role=button aria-label="play the fast animation">fast.<span class=trn id=trn><svg class=tr viewBox="0 0 64 16" aria-hidden="true"><g transform="translate(64 0) scale(-1 1)" fill="none" stroke="#2a2114" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M2 12c0-1 1-2 4-3.5C12 5.5 20 4 28 4h30c3 0 4.500 1.500 4.500 4v4H2z" fill="#e8d8a8"/><path d="M13 6.300h8M25 6.300h8M37 6.300h8M49 6.300h7"/><path d="M2 10.500h60" stroke="#8c2f1b"/><path d="M8 15.300h4M20 15.300h4M40 15.300h4M52 15.300h4"/></g></svg></span></span></div>
 
 <section><h2>today <span class=note>(hover the wavy words)</span></h2>
 <p>I'm a third-year B.Tech student in AI &amp; ML at <a class=chip href="https://www.google.com/search?q=Shri+Ram+College+of+Engineering+and+Management+Gwalior" target=_blank rel=noopener>&#10026; SRCEM</a>, building <button class=hv data-t=tools>tools</button> and shipping <button class=hv data-t=oss>open source</button> in public.</p>
@@ -130,13 +136,37 @@ pjs.forEach(el=>el.querySelector('button').onclick=()=>{const o=!el.classList.co
 $('#lk').innerHTML=D.links.map(l=>`<a href="${l[1]}" target=_blank rel=noopener>${l[0].toLowerCase()}</a>`).join('');
 // clock
 const t=()=>$('#clock').textContent=new Date().toLocaleTimeString('en-IN',{timeZone:'Asia/Kolkata',hour:'2-digit',minute:'2-digit'})+' IST';t();setInterval(t,30000);
-// bullet train: one run at a time, replays every time
-const f=$('#fast'),tr=$('#trn'),ts=tr.querySelector('svg'),sp=tr.querySelector('.sp');let run=false;
-const go=()=>{if(run)return;run=true;const r=tr.getBoundingClientRect(),room=Math.max(30,Math.min(150,innerWidth-r.right-24));
-if(matchMedia('(prefers-reduced-motion:reduce)').matches){setTimeout(()=>run=false,400);return}
-const a=ts.animate([{transform:'translateX(0)'},{transform:'translateX(-4px)',offset:.12},{transform:'translateX('+room+'px)',opacity:1,offset:.7},{transform:'translateX('+(room+40)+'px)',opacity:0}],{duration:1100,easing:'cubic-bezier(.5,0,.8,.6)'});
-sp.animate([{opacity:0,transform:'translateX(0)'},{opacity:.9,offset:.3},{opacity:0,transform:'translateX('+room+'px)'}],{duration:1100});
-a.onfinish=a.oncancel=()=>{ts.animate([{opacity:0,transform:'translateX(-30px)'},{opacity:1,transform:'translateX(0)'}],{duration:350,easing:'ease-out'}).onfinish=()=>{run=false}}};
+// bullet train story: dawn run past Fuji, arrives on time
+const f=$('#fast'),tr=$('#trn'),ts=tr.querySelector('svg.tr');let busy=false;
+const K='stroke="#2a2114" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"';
+const sc=document.createElement('div');sc.className='scn';sc.setAttribute('aria-hidden','true');
+sc.innerHTML='<svg class="sxc" viewBox="0 0 24 10"><path d="M2 9c-2 0-2-3 1-3 0-3 5-4 7-1 2-2 6-1 6 2 3-1 5 2 2 2z" fill="#efdfb0" '+K+'/></svg>'
++'<svg class="sxf" viewBox="0 0 46 27"><path d="M1 26L17 5q6-5 12 0l16 21z" fill="#d9c58a" '+K+'/><path d="M12.500 11L17 5q6-5 12 0l4.500 6-4-2-3 2-3-2-3 2-3-2z" fill="#f4ecd6" '+K+'/></svg>'
++'<svg class="sxh" viewBox="0 0 30 14"><path d="M1 13L11 3q4-2 8 0l10 10z" fill="#c9b27a" '+K+'/></svg>'
++'<div class="sxr"></div>'
++'<svg class="sxs" viewBox="0 0 18 24"><path d="M1 8h16l-2.500-5h-11z" fill="#8c2f1b" '+K+'/><path d="M4 8v15M14 8v15" '+K+' fill="none"/></svg>'
++'<span class="sxm">ON TIME</span>';
+tr.prepend(sc);
+const q=c=>sc.querySelector(c),fj=q('.sxf'),hl=q('.sxh'),cl=q('.sxc'),rl=q('.sxr'),st=q('.sxs'),sm=q('.sxm');
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
+const go=async()=>{if(busy)return;busy=true;
+if(matchMedia('(prefers-reduced-motion:reduce)').matches){await wait(300);busy=false;return}
+try{const left=tr.getBoundingClientRect().left,tw=ts.getBoundingClientRect().width;
+const W=Math.max(110,Math.min(250,innerWidth-left-12)),X=Math.max(20,W-tw-18);
+sc.style.width=W+'px';fj.style.left=(W*.55)+'px';hl.style.left=(W*.2)+'px';cl.style.left=(W*.35)+'px';
+sc.style.opacity=1;const o={duration:2000,easing:'cubic-bezier(.45,0,.25,1)',fill:'forwards'};
+const A=[ts.animate([{transform:'translateX(0)'},{transform:'translateX(-3px)',offset:.08},{transform:'translateX('+X+'px)'}],o),
+fj.animate([{transform:'translateX(0)'},{transform:'translateX(-'+(W*.4)+'px)'}],o),
+hl.animate([{transform:'translateX(0)'},{transform:'translateX(-'+(W*.9)+'px)'}],o),
+cl.animate([{transform:'translateX(0)'},{transform:'translateX(-'+(W*.7)+'px)'}],o),
+rl.animate([{backgroundPositionX:'0px'},{backgroundPositionX:'-'+(X*1.3)+'px'}],o),
+st.animate([{transform:'translateX(40px)'},{transform:'translateX(0)'}],o)];
+await Promise.all(A.map(a=>a.finished.catch(()=>{})));
+const S=sm.animate([{opacity:0,transform:'rotate(-8deg) scale(1.7)'},{opacity:1,transform:'rotate(-8deg) scale(1)'}],{duration:220,fill:'forwards'});
+await wait(950);sc.style.opacity=0;ts.animate([{opacity:1},{opacity:0}],{duration:250,fill:'forwards'});await wait(300);
+A.concat([S]).forEach(a=>a.cancel());ts.getAnimations().forEach(a=>a.cancel());
+ts.animate([{opacity:0},{opacity:1}],{duration:350,easing:'ease-out'});await wait(350)}
+finally{busy=false}};
 f.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')go()});f.addEventListener('click',go);f.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}});
 // hover cards
 const T={tools:[D.projects.map(p=>p.n),'things I built'],oss:[['11 merged PRs','Open Directory','Meshery'],'open source contributions'],aitsc:[['founder','vice president','SRCEM'],'AI & Technical Synthesis Council'],gs:[['hosted','anchored'],'event at SRCEM'],paper:[['MAICM','NCETEM-I','sole author'],'multi-agent colony management, AI + IoT + edge'],video:[['YouTube','AI tools','setup guides'],'tech videos']};
