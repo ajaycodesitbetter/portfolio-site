@@ -1,3 +1,156 @@
-<!doctype html><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Ajay Mathuriya, style previews</title>
-<style>body{font:16px/1.6 system-ui;margin:12vh auto;max-width:520px;padding:0 20px;background:#faf8f4;color:#1a1a1a}a{display:block;padding:14px 0;border-bottom:1px solid #ddd;color:inherit;text-decoration:none}a:hover{padding-left:8px}small{color:#777}</style>
-<h1>Portfolio previews</h1><a href=a/>A. Quiet <small>warm white, minimal</small></a><a href=b/>B. Signal <small>dark, NVIDIA green, interactive</small></a><a href=c/>C. Playground <small>warm white, playful, dynamic</small></a>
+<!doctype html><html lang=en><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
+<title>Ajay Mathuriya</title><meta name=description content="AI/ML student in Gwalior. Builds small tools, ships open source, makes tech videos.">
+<link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Special+Elite&family=Mrs+Saint+Delafield&display=swap" rel=stylesheet>
+<style>
+:root{--ink:#2a2114;--mute:#4a3a1c;--line:#7a6232;--paper:#e6d29b;--card:#efdfb0;--bg:#e6d29b;--acc:#8c2f1b;--red:#8c2f1b}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);font:16px/1.75 'Courier Prime',monospace;background-color:var(--paper);min-height:100vh;
+background-image:radial-gradient(ellipse 30vw 24vh at 8% 6%,rgba(140,90,30,.2),transparent 70%),radial-gradient(ellipse 34vw 26vh at 96% 48%,rgba(120,75,20,.16),transparent 70%),radial-gradient(ellipse 28vw 22vh at 4% 88%,rgba(130,80,25,.18),transparent 70%),repeating-linear-gradient(180deg,transparent 0,transparent 899px,rgba(80,50,15,.2) 900px,rgba(255,248,220,.3) 902px,transparent 905px)}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;box-shadow:inset 0 0 120px rgba(110,65,12,.5),inset 0 0 6px rgba(60,35,10,.5);mix-blend-mode:multiply;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .25 0 0 0 0 .1 0 0 0 .3 0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E")}
+#morse{position:fixed;inset:0;overflow:hidden;pointer-events:none;font:11px/1.5 'Courier Prime',monospace;color:var(--ink);opacity:.07;white-space:pre;letter-spacing:.05em;user-select:none}
+a{color:inherit}
+.wrap{position:relative;z-index:2;max-width:768px;margin:0 auto 0 max(0px,calc(50vw - 384px));padding:clamp(24px,5vw,64px) clamp(22px,4vw,64px) 160px}
+@media(min-width:1100px){.wrap{margin:0 auto}}
+.tw{font-family:'Special Elite','Courier Prime',monospace}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.top .nm{font-family:'Special Elite',monospace;font-size:17px}
+.top .rt{text-align:right;font-size:12px;line-height:1.6;color:var(--mute)}
+.tagbox{display:inline-block;border:1px solid var(--ink);border-radius:2px;padding:1px 7px;font-size:10px;letter-spacing:.14em;color:var(--mute);margin-top:14px}
+.line{margin:12px 0 0;display:flex;align-items:center;flex-wrap:wrap;gap:0 6px;min-height:26px}
+.fast{position:relative;display:inline-block;width:3.1em;height:1.4em;cursor:pointer;font-style:italic;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line)}
+.fast .w{position:absolute;left:0;top:0}
+.jeep{position:absolute;left:0;bottom:-3px;width:96px;height:49px;opacity:0;pointer-events:none;overflow:visible}
+.fast:hover .w,.fast.go .w{opacity:0}
+.fast:hover .jeep,.fast.go .jeep{opacity:1;animation:drive 2.6s linear infinite}
+@keyframes drive{0%{transform:translateX(-10px)}100%{transform:translateX(var(--d,260px))}}
+.jeep .wh{transform-box:fill-box;transform-origin:center;animation:spin .35s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.jeep .bd{animation:bump .22s ease-in-out infinite alternate}
+@keyframes bump{to{transform:translateY(-1.2px)}}
+.dust{opacity:.5;animation:dust .5s linear infinite}
+@keyframes dust{from{transform:translateX(0);opacity:.6}to{transform:translateX(-14px);opacity:0}}
+h2{font:400 16px/1.4 'Special Elite',monospace;letter-spacing:.14em;text-transform:uppercase;margin:0 0 10px;color:var(--ink)}h2::before{content:'\00a7  ';color:var(--red)}.note{text-transform:none;letter-spacing:0;font:400 36px/1 'Mrs Saint Delafield',cursive;color:#1d2a52;display:inline-block;transform:rotate(-4deg);margin-left:10px;vertical-align:middle;white-space:nowrap}
+section{margin-top:34px}
+p{margin:0 0 10px}
+.chip{display:inline-flex;align-items:center;gap:6px;background:var(--ink);color:var(--paper);padding:0 7px;border-radius:2px;text-decoration:none;font-size:14px;line-height:1.6}
+.hv{cursor:pointer;font-weight:700;text-decoration:underline wavy;text-decoration-color:var(--line);text-underline-offset:3px;transition:text-decoration-color .2s;background:none;border:0;padding:0;font-family:inherit;font-size:inherit;color:inherit}
+.hv{background:linear-gradient(transparent 62%,rgba(140,47,27,.0) 62%);transition:background .25s,color .2s,text-decoration-color .2s}.hv:hover,.hv:focus-visible{text-decoration-color:var(--red);color:var(--red);background:linear-gradient(transparent 58%,rgba(140,47,27,.16) 58%);outline:0}
+#tip{position:fixed;left:0;top:0;z-index:60;background:var(--ink);color:#ecdcae;border-radius:3px;padding:10px 14px 8px;box-shadow:0 8px 24px rgba(40,25,5,.4);opacity:0;transform:translateY(6px);transition:opacity .18s,transform .18s;pointer-events:none;text-align:center;max-width:min(340px,92vw)}
+#tip.on{opacity:1;transform:none}
+#tip .cs{display:flex;flex-wrap:wrap;gap:6px 12px;justify-content:center;font-size:13px}
+#tip .cs i{font-style:normal;border:1px solid #8a7348;padding:0 7px;border-radius:2px}
+#tip small{display:block;margin-top:6px;font-size:10.5px;letter-spacing:.08em;color:#b09a68}
+.rec{display:grid;grid-template-columns:1fr;gap:3px}
+.rec div{display:block}.rec b+span{margin-left:8px}.rec b{font-weight:700;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--red)}.rec span{color:var(--mute)}
+/* projects */
+.pj{border-bottom:1px solid rgba(138,115,72,.55)}
+.pj>button{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:10px;width:100%;padding:7px 0;cursor:pointer}
+.pj>button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.pj:first-of-type{border-top:0}
+.pj .nm{font-weight:700;flex:1;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.pj>button:hover .nm{transform:translateX(5px);color:var(--red)}
+.pj .tg{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}
+.pj .tg i{font-style:normal;font-size:11px;border:1px solid var(--line);padding:0 7px;border-radius:2px;color:var(--mute);line-height:1.6}
+.pj .ar{width:14px;text-align:center;transition:transform .4s cubic-bezier(.2,.8,.2,1);font-size:13px}
+.pj.open .ar{transform:rotate(180deg)}
+.pj .pn{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.2,.8,.2,1)}
+.pj.open .pn{grid-template-rows:1fr}
+.pj .pn>div{overflow:hidden;min-height:0}
+.pj .in{padding:6px 0 18px;opacity:0;transform:translateY(8px);transition:opacity .45s .12s,transform .45s .12s}
+.pj.open .in{opacity:1;transform:none}
+.ol{font-size:13.5px;color:var(--mute);margin:-2px 0 10px}
+.win{border:2px solid var(--ink);background:#d9c58a;box-shadow:4px 4px 0 rgba(42,33,20,.3);margin-bottom:12px}
+.win .bar{display:flex;gap:6px;align-items:center;padding:3px 8px;border-bottom:2px solid var(--ink);font-size:10px;letter-spacing:.14em;text-transform:uppercase}
+.win .bar b{width:8px;height:8px;border:1.5px solid var(--ink);display:inline-block}.win .bar span{margin-left:auto}
+.win .scr{aspect-ratio:16/10;overflow:hidden;position:relative;background:#1a1610}
+.win img,.win video{width:100%;height:100%;object-fit:cover;display:block;filter:sepia(.28) contrast(1.04);animation:kb 14s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.07) translate(-1.5%,-2%)}}
+.win .scr::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.08) 0 1px,transparent 1px 3px);pointer-events:none}
+.win .none{display:grid;place-items:center;height:100%;color:#d9c58a;font-size:11px;letter-spacing:.2em;text-transform:uppercase;text-align:center;padding:16px}
+.lv{display:inline-block;margin-top:2px;text-decoration:none;font-size:14px;font-weight:700;color:var(--red);border-bottom:1.5px solid var(--red)}
+.lv:hover{background:var(--red);color:var(--paper)}
+.apps{display:flex;gap:16px;align-items:center;margin-top:22px}
+.pr{margin-top:6px;font-size:13px;color:var(--mute)}.pr a{color:var(--ink)}
+.lk{display:flex;flex-wrap:wrap;gap:4px 18px;margin-top:6px}
+.lk a{font-weight:700;text-underline-offset:3px;text-decoration-color:var(--red)}.lk a:hover{color:var(--red)}
+.sig{margin-top:30px;font:400 64px/.8 'Mrs Saint Delafield',cursive;color:#1d2a52;transform:rotate(-3deg);transform-origin:left;clip-path:inset(0 100% 0 0);transition:clip-path 1.6s steps(36) .2s;padding:0 12px 8px 0;display:inline-block}
+.sig.in{clip-path:inset(0 0 0 0)}
+.stamp{position:absolute;right:clamp(16px,4vw,64px);top:clamp(64px,9vw,100px);transform:rotate(-9deg);border:2.5px solid var(--red);color:var(--red);padding:3px 10px;font:400 13px/1.2 'Special Elite',monospace;letter-spacing:.14em;text-transform:uppercase;text-align:center;border-radius:3px;mix-blend-mode:multiply;opacity:0;pointer-events:none;z-index:3}
+.stamp.hit{animation:thump .55s cubic-bezier(.2,1.4,.4,1) .7s forwards}
+@keyframes thump{0%{opacity:0;transform:rotate(-9deg) scale(2.4)}60%{opacity:.9;transform:rotate(-9deg) scale(.96)}100%{opacity:.8;transform:rotate(-9deg) scale(1)}}
+.r{opacity:0;transform:translateY(10px);transition:opacity .7s,transform .7s}.r.in{opacity:1;transform:none}
+/* dialog */
+#dlg{position:fixed;inset:0;z-index:70;background:rgba(40,28,10,.45);display:none;place-items:center;padding:16px}
+#dlg.on{display:grid}
+#dlg form{background:var(--card);border:2px solid var(--ink);box-shadow:6px 6px 0 rgba(42,33,20,.4);padding:16px;width:min(440px,100%);font-size:14px}
+#dlg textarea,#dlg input{width:100%;font:inherit;background:rgba(255,248,220,.5);border:1px solid var(--ink);border-radius:0;padding:8px;color:var(--ink);margin-top:8px}
+#dlg textarea{height:100px;resize:none}
+#dlg .bt{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+#dlg button{font:inherit;cursor:pointer;background:none;border:0;color:var(--mute)}#dlg button.s{background:var(--ink);color:var(--paper);padding:4px 14px}
+@media(max-width:560px){.note{font-size:24px;margin-left:4px}.stamp{top:150px}.pj .tg i:nth-child(n+3){display:none}.top .nm{font-size:15px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.stamp{opacity:.8}.r{opacity:1;transform:none}.sig{clip-path:none}}
+
+.polaroid{position:absolute;top:92px;right:24px;width:110px;background:#f4ecd6;padding:6px 6px 22px;box-shadow:0 3px 8px #0004;transform:rotate(4deg);z-index:2}.polaroid img{width:100%;display:block;filter:sepia(.35) contrast(1.05)}.polaroid:before{content:'';position:absolute;top:-9px;left:35px;width:40px;height:16px;background:#d8c58a99;transform:rotate(-3deg)}@media(max-width:560px){.polaroid{display:none}}
+
+@media(max-width:560px){body{font-size:13px;line-height:1.75}.wrap{padding:26px 28px 140px}.top .nm{font-size:14px}.top .rt{font-size:11px}.tagbox{font-size:9.5px;margin-top:12px}h2{font-size:13px;letter-spacing:.04em;margin-bottom:8px}.note{font-size:26px;margin-left:2px}.stamp{top:82px;right:10px;font-size:10px;padding:2px 7px}.chip{font-size:12px}.pj .nm{font-size:13px}.pj .tg i{font-size:9.5px;padding:0 5px}.ol{font-size:12px}.lv{font-size:12px}.pr{font-size:11.5px}.lk a{font-size:13px}.sig{font-size:50px}#dlg form{font-size:13px}}
+</style>
+<div id=morse aria-hidden=true></div>
+<div class=stamp id=st>Cleared</div>
+<div class=wrap>
+<div class=top><span class=nm>ajay mathuriya</span><span class=rt><a href="https://www.google.com/search?q=top+5+facts+about+Gwalior" target=_blank rel=noopener style="text-decoration:none">(ग्वालियर, इंडिया)</a><br><span id=clock></span></span></div>
+<div class=tagbox>AI / ML, BUILDER, OPEN SOURCE</div>
+<div class=line>ships small tools really <span class=fast id=fast tabindex=0 aria-label="fast"><span class=w>fast.</span>
+<svg class=jeep viewBox="0 0 78 40" aria-hidden=true><g class=dust><circle cx="4" cy="30" r="2" fill="#4a3a1c"/><circle cx="-3" cy="28" r="1.5" fill="#4a3a1c"/></g><g class=bd fill="none" stroke="#2a2114" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M6 28V18h14l4-9h8l2 9h22l6 5v5z" fill="#c9b27a"/><path d="M24 9v9M32 9l2 9" /><path d="M10 14h8" /><path d="M50 18l-3-6h-6" /><circle cx="40" cy="23" r="0"/></g><g class=bd><path d="M32 21l1.4 3 3.2.3-2.4 2.1.8 3.1-3-1.7-3 1.7.8-3.1-2.4-2.1 3.2-.3z" fill="#8c2f1b" transform="translate(-2 -2) scale(.8)"/></g><g class=wh><circle cx="18" cy="31" r="6.5" fill="#2a2114"/><circle cx="18" cy="31" r="2.2" fill="#c9b27a"/><path d="M18 25v12M12 31h12" stroke="#c9b27a" stroke-width="1"/></g><g class=wh><circle cx="58" cy="31" r="6.5" fill="#2a2114"/><circle cx="58" cy="31" r="2.2" fill="#c9b27a"/><path d="M58 25v12M52 31h12" stroke="#c9b27a" stroke-width="1"/></g></svg></span></div>
+
+<section><h2>today <span class=note>(hover the wavy words)</span></h2>
+<p>I'm a third-year B.Tech student in AI &amp; ML at <a class=chip href="https://www.google.com/search?q=Shri+Ram+College+of+Engineering+and+Management+Gwalior" target=_blank rel=noopener>&#10026; SRCEM</a>, building <button class=hv data-t=tools>tools</button> and shipping <button class=hv data-t=oss>open source</button> in public.</p>
+<p>I'm founder and VP of <button class=hv data-t=aitsc>AITSC</button>, and I hosted and anchored <button class=hv data-t=gs>Gyaan Setu</button>.</p>
+<p>I also published a sole-author <button class=hv data-t=paper>paper</button> and make tech <button class=hv data-t=video>videos</button> for YouTube. Or just <button class=hv id=hi>say hi</button>.</p></section>
+
+<section><h2>service record</h2><div class=rec>
+<div><b>AITSC</b><span>founder / vice president</span></div>
+<div><b>open directory</b><span>11 merged pull requests</span></div>
+<div><b>NCETEM-I</b><span>paper author (MAICM)</span></div>
+<div><b>SRCEM</b><span>B.Tech AI &amp; ML, 2024 to 2028</span></div></div>
+<p class=pr>last merged PR: <span id=pr>retrieving...</span></p></section>
+
+<section><h2>field projects</h2><div id=pl></div></section>
+
+<section><h2>correspondence</h2><div class=lk id=lk></div>
+<div class=sig id=sg>Ajay Mathuriya</div></section>
+</div>
+<div id=tip role=tooltip></div>
+<div id=dlg><form id=df><div>Send Ajay a note. It opens your mail app, so you can edit it first.</div><textarea id=dm placeholder="Say hi, or tell me what you want to build"></textarea><input id=de type=email placeholder="Your email (optional)"><div class=bt><button type=button id=dc>Cancel</button><button class=s>Send</button></div></form></div>
+<script src=data.js></script>
+<script>
+const D=AJ,$=s=>document.querySelector(s);
+// faint morse background
+(function(){const m='.- .--- .- -.-- / -- .- - .... ..- .-. .. -.-- .- / ';let row='';while(row.length<260)row+=m;let o='';for(let i=0;i<70;i++)o+=row.slice((i*17)%m.length)+'\n';$('#morse').textContent=o})();
+// projects accordion
+$('#pl').innerHTML=D.projects.map((p,i)=>{
+const media=p.v?`<video src="${p.v}" autoplay muted loop playsinline></video>`:p.img?`<img src="${p.img}" alt="${p.n} screenshot">`:`<div class=none>No exhibit on file.<br>See the repository.</div>`;
+return `<div class="pj${i==0?' open':''}"><button aria-expanded="${i==0}" aria-controls="p${i}"><span class=nm>${p.n}</span><span class=tg>${p.t.map(x=>`<i>${x}</i>`).join('')}</span><span class=ar aria-hidden=true>\u2193</span></button><div class=pn id=p${i}><div><div class=in><div class=ol>${p.line}</div><div class=win><div class=bar><b></b><b></b><b></b><span>Exhibit ${String.fromCharCode(65+i)}</span></div><div class=scr>${media}</div></div><p>${p.d}</p><a class=lv href="${p.u}" target=_blank rel=noopener>\u2197 live</a></div></div></div></div>`}).join('');
+const pjs=[...document.querySelectorAll('.pj')];
+pjs.forEach(el=>el.querySelector('button').onclick=()=>{const o=!el.classList.contains('open');pjs.forEach(x=>{x.classList.remove('open');x.firstChild.setAttribute('aria-expanded',false)});if(o){el.classList.add('open');el.firstChild.setAttribute('aria-expanded',true)}});
+$('#lk').innerHTML=D.links.map(l=>`<a href="${l[1]}" target=_blank rel=noopener>${l[0].toLowerCase()}</a>`).join('');
+// clock
+const t=()=>$('#clock').textContent=new Date().toLocaleTimeString('en-IN',{timeZone:'Asia/Kolkata',hour:'2-digit',minute:'2-digit'})+' IST';t();setInterval(t,30000);
+// jeep on tap (touch)
+const f=$('#fast');const dist=()=>f.style.setProperty('--d',Math.max(40,Math.min(300,innerWidth-f.getBoundingClientRect().left-100))+'px');f.addEventListener('mouseenter',dist);f.onclick=()=>{dist();f.classList.add('go');setTimeout(()=>f.classList.remove('go'),5200)};
+// hover cards
+const T={tools:[D.projects.map(p=>p.n),'things I built'],oss:[['11 merged PRs','Open Directory','Meshery'],'open source contributions'],aitsc:[['founder','vice president','SRCEM'],'AI & Technical Synthesis Council'],gs:[['hosted','anchored'],'event at SRCEM'],paper:[['MAICM','NCETEM-I','sole author'],'multi-agent colony management, AI + IoT + edge'],video:[['YouTube','AI tools','setup guides'],'tech videos']};
+const tip=$('#tip');let cur=null;
+function show(b){const d=T[b.dataset.t];tip.innerHTML=`<div class=cs>${d[0].map(x=>`<i>${x}</i>`).join('')}</div><small>${d[1]}</small>`;const r=b.getBoundingClientRect(),w=tip.offsetWidth;let x=Math.max(8,Math.min(innerWidth-w-8,r.left+r.width/2-w/2));let y=r.top-tip.offsetHeight-10;if(y<8)y=r.bottom+10;tip.style.left=x+'px';tip.style.top=y+'px';tip.classList.add('on');cur=b}
+function hide(){tip.classList.remove('on');cur=null}
+document.querySelectorAll('.hv[data-t]').forEach(b=>{b.onmouseenter=()=>show(b);b.onmouseleave=hide;b.onfocus=()=>show(b);b.onblur=hide;b.onclick=e=>{e.stopPropagation();show(b)}});
+document.addEventListener('click',hide);addEventListener('scroll',hide,{passive:true});
+// message dialog (opens mail app, no backend)
+const dlg=$('#dlg');$('#hi').onclick=()=>{dlg.classList.add('on');$('#dm').focus()};$('#dc').onclick=()=>dlg.classList.remove('on');dlg.onclick=e=>{if(e.target===dlg)dlg.classList.remove('on')};
+addEventListener('keydown',e=>{if(e.key==='Escape')dlg.classList.remove('on')});
+$('#df').onsubmit=e=>{e.preventDefault();const em=$('#de').value.trim();const body=$('#dm').value.trim()+(em?`\n\nMy email: ${em}`:'');location.href='mailto:hey@ajaymathuriya.com?subject='+encodeURIComponent('Hello from your site')+'&body='+encodeURIComponent(body);dlg.classList.remove('on')};
+setTimeout(()=>$('#st').classList.add('hit'),100);
+fetch('https://api.github.com/search/issues?q=author:ajaycodesitbetter+type:pr+is:merged+-user:ajaycodesitbetter&sort=updated&per_page=1').then(r=>r.json()).then(j=>{const x=j.items&&j.items[0];if(!x)throw 0;const repo=x.repository_url.split('/').slice(-2).join('/');$('#pr').innerHTML=`<a href="${x.html_url}" target=_blank rel=noopener>${x.title}</a> in ${repo}`}).catch(()=>{$('#pr').innerHTML='<a href="https://github.com/ajaycodesitbetter" target=_blank rel=noopener>see github</a>'});
+new IntersectionObserver((es,o)=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');o.unobserve(x.target)}}),{threshold:.2}).observe($('#sg'));
+</script><script src=chat.js></script></html>
