@@ -6,7 +6,7 @@
    "headers": [
     {
      "key": "Content-Security-Policy",
-     "value": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.github.com; frame-ancestors 'none'; base-uri 'none'; form-action 'self' mailto:; object-src 'none'"
+     "value": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:; connect-src 'self' https://api.github.com; frame-ancestors 'none'; base-uri 'none'; form-action 'self' mailto:; object-src 'none'"
     },
     {
      "key": "X-Content-Type-Options",
@@ -59,12 +59,47 @@
    "permanent": false
   },
   {
-   "source": "/4-vercel.json",
+   "source": "/api/10-chat",
    "destination": "/",
    "permanent": false
   },
   {
-   "source": "/api/10-chat",
+   "source": "/1-index",
+   "destination": "/",
+   "permanent": false
+  },
+  {
+   "source": "/2-data",
+   "destination": "/",
+   "permanent": false
+  },
+  {
+   "source": "/3-chat",
+   "destination": "/",
+   "permanent": false
+  },
+  {
+   "source": "/4-vercel",
+   "destination": "/",
+   "permanent": false
+  },
+  {
+   "source": "/a",
+   "destination": "/",
+   "permanent": false
+  },
+  {
+   "source": "/b",
+   "destination": "/",
+   "permanent": false
+  },
+  {
+   "source": "/c",
+   "destination": "/",
+   "permanent": false
+  },
+  {
+   "source": "/4-vercel.json",
    "destination": "/",
    "permanent": false
   }
