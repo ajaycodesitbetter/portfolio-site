@@ -1,1 +1,72 @@
-{"cleanUrls":true}
+{
+ "cleanUrls": true,
+ "headers": [
+  {
+   "source": "/(.*)",
+   "headers": [
+    {
+     "key": "Content-Security-Policy",
+     "value": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.github.com; frame-ancestors 'none'; base-uri 'none'; form-action 'self' mailto:; object-src 'none'"
+    },
+    {
+     "key": "X-Content-Type-Options",
+     "value": "nosniff"
+    },
+    {
+     "key": "X-Frame-Options",
+     "value": "DENY"
+    },
+    {
+     "key": "Referrer-Policy",
+     "value": "strict-origin-when-cross-origin"
+    },
+    {
+     "key": "Permissions-Policy",
+     "value": "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+    }
+   ]
+  }
+ ],
+ "redirects": [
+  {
+   "source": "/a/:p*",
+   "destination": "/",
+   "permanent": false
+  },
+  {
+   "source": "/b/:p*",
+   "destination": "/",
+   "permanent": false
+  },
+  {
+   "source": "/c/:p*",
+   "destination": "/",
+   "permanent": false
+  },
+  {
+   "source": "/1-index.html",
+   "destination": "/",
+   "permanent": false
+  },
+  {
+   "source": "/2-data.js",
+   "destination": "/",
+   "permanent": false
+  },
+  {
+   "source": "/3-chat.js",
+   "destination": "/",
+   "permanent": false
+  },
+  {
+   "source": "/4-vercel.json",
+   "destination": "/",
+   "permanent": false
+  },
+  {
+   "source": "/api/10-chat",
+   "destination": "/",
+   "permanent": false
+  }
+ ]
+}
