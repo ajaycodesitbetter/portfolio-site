@@ -3,7 +3,7 @@ const D=window.AJ,css=getComputedStyle(document.documentElement);
 const st=document.createElement('style');st.textContent=`
 #ck{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);width:min(440px,calc(100vw - 24px));z-index:20;font:15px/1.5 'Courier Prime',monospace}
 #ck .box{background:var(--card,#fff);color:var(--ink,#111);border:1px solid var(--line,#ddd);border-radius:2px;box-shadow:0 10px 30px rgba(40,25,5,.35),0 0 0 3px rgba(232,213,163,.6);border-color:var(--ink,#111);font-family:'Special Elite','Courier Prime',monospace;overflow:hidden}
-#ck .log{display:none;max-height:300px;overflow:auto;padding:14px}
+#ck .x{display:none;position:absolute;top:6px;right:8px;z-index:2;width:28px;height:28px;border:1px solid var(--ink,#111);background:var(--card,#fff);color:var(--ink,#111);font:18px/1 monospace;border-radius:2px;cursor:pointer;padding:0}#ck.open .x{display:block}#ck .log{display:none;padding-right:44px!important;max-height:300px;overflow:auto;padding:14px}
 #ck.open .log{display:block}
 #ck .m{margin:0 0 10px;font-size:14px}#ck .u{text-align:right;color:var(--mute,#777)}
 #ck .a{color:var(--ink,#111)}#ck a{color:var(--acc,var(--g,#f60))}#ck .a b{color:var(--acc,var(--g,#f60))}
@@ -16,7 +16,7 @@ const st=document.createElement('style');st.textContent=`
 #ck kbd{font-size:11px;color:var(--mute,#777);border:1px solid var(--line,#ddd);border-radius:5px;padding:1px 6px}
 #ck button.s{width:30px;height:30px;border-radius:2px;border:0;background:var(--ink,#111);color:var(--bg,#fff);cursor:pointer}
 @media(max-width:640px){#ck kbd{display:none}}`;document.head.append(st);
-const el=document.createElement('div');el.id='ck';el.innerHTML=`<div class=box><div class=log id=cl aria-live=polite></div><form id=cf><input id=ci placeholder="Ask about me, work or send a message!" aria-label="Ask about Ajay" maxlength=300><kbd>\u2318 K</kbd><button class=s aria-label=Send>\u2191</button></form></div>`;document.body.append(el);
+const el=document.createElement('div');el.id='ck';el.innerHTML=`<div class=box><button type=button class=x id=cx aria-label="Close chat">\u00d7</button><div class=log id=cl aria-live=polite></div><form id=cf><input id=ci placeholder="Ask about me, work or send a message!" aria-label="Ask about Ajay" maxlength=300><kbd>\u2318 K</kbd><button class=s aria-label=Send>\u2191</button></form></div>`;document.body.append(el);
 const log=el.querySelector('#cl'),inp=el.querySelector('#ci');
 const add=(c,h)=>{const p=document.createElement('p');p.className='m '+c;p.innerHTML=h;log.append(p);el.classList.add('open');log.scrollTop=1e9;return p};
 const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
@@ -37,6 +37,9 @@ async function ask(q){add('u',esc(q));const w=add('a','...');
 let out=null;try{const r=await fetch('/api/chat',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({q})});if(r.ok){const j=await r.json();if(j.a)out=esc(j.a)}}catch(e){}
 w.innerHTML=out||local(q)}
 el.querySelector('#cf').onsubmit=e=>{e.preventDefault();const q=inp.value.trim();if(q){inp.value='';ask(q)}};
-inp.addEventListener('focus',()=>{if(!log.children.length){add('a','Hi, I answer questions about Ajay. <div class=sg>'+['Projects','Open source','Contact'].map(s=>`<button type=button>${s}</button>`).join('')+'</div>');log.querySelectorAll('.sg button').forEach(b=>b.onclick=()=>ask(b.textContent))}});
-addEventListener('keydown',e=>{if(((e.key==='k'&&(e.metaKey||e.ctrlKey))||(e.key==='/'&&document.activeElement.tagName!=='INPUT'))&&!(e.key==='/'&&document.activeElement.tagName==='TEXTAREA')){e.preventDefault();inp.focus()}if(e.key==='Escape'){el.classList.remove('open');inp.blur()}});
+const shut=()=>{el.classList.remove('open');inp.blur()};
+el.querySelector('#cx').onclick=shut;
+document.addEventListener('pointerdown',e=>{if(!el.contains(e.target))shut()},true);
+inp.addEventListener('focus',()=>{if(log.children.length)el.classList.add('open');if(!log.children.length){add('a','Hi, I answer questions about Ajay. <div class=sg>'+['Projects','Open source','Contact'].map(s=>`<button type=button>${s}</button>`).join('')+'</div>');log.querySelectorAll('.sg button').forEach(b=>b.onclick=()=>ask(b.textContent))}});
+addEventListener('keydown',e=>{if(((e.key==='k'&&(e.metaKey||e.ctrlKey))||(e.key==='/'&&document.activeElement.tagName!=='INPUT'))&&!(e.key==='/'&&document.activeElement.tagName==='TEXTAREA')){e.preventDefault();inp.focus()}if(e.key==='Escape')shut()});
 })();
